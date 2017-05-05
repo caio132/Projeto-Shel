@@ -42,9 +42,9 @@ dialog --title "Informação" --msgbox "Arquivo/Diretorio copiado com sucesso" 0
 GARQ
 }
 function LARQ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0)
-ls -lh $NOME
-dialog --title "Informação" --msgbox "Arquivo/Diretorio listado com sucesso" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o caminho" 0 0)
+ls -la > /tmp/listar.txt
+dialog --title "Listar" --textbox /tmp/listar.txt 0 0
 GARQ
 }
 function PERM(){
@@ -193,9 +193,9 @@ dialog --title "Informação" --msgbox "Arquivo/Diretorio copiado com sucesso" 0
 GARQ
 }
 function LARQ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0)
-ls -lh $NOME
-dialog --title "Informação" --msgbox "Arquivo/Diretorio listado com sucesso" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o caminho" 0 0)
+ls -la > /tmp/listar.txt
+dialog --title "Listar" --textbox /tmp/listar.txt 0 0
 GARQ
 }
 function GARQ(){
