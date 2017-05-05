@@ -1,5 +1,21 @@
 #!/bin/bash
 
+TEMP=1
+
+MENU(){
+OPCAO=$(dialog				\
+	--stdout			\
+	--title 'Menu'			\
+	--menu 'Escolha uma opção'	\
+	0 0 0				\
+	1 'Gerenciar Arquivos'		\
+	2 'Sair'			)
+	case $OPCAO in
+		1) GARQ ;;
+		2) FIM ;;
+		*) exit 0
+	esac
+}
 function GARQ(){
 OPCAO=$(dialog				\
 	--stdout			\
@@ -29,6 +45,11 @@ OPCAO=$(dialog				\
 		9) FIM ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; MENU ;;
 	esac
+}
+FIM(){
+	dialog --title "FIM" --msgbox "Ate breve" 0 0
+	clear
+	exit 0
 }
 
 GARQ=$(){
@@ -87,5 +108,7 @@ chmod +x $NOME
 dialog --title "Informação" --msgbox "Arquivo criado com Sucesso" 0 0
 GARQ
 }
-
+while [[ $TEMP != 0 ]]; do
+	MENU || FIM
+done
 
