@@ -47,11 +47,64 @@ ls -la > /tmp/listar.txt
 dialog --title "Listar" --textbox /tmp/listar.txt 0 0
 GARQ
 }
+
+function SESQ(){
+NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+chmod 222 $NAME
+dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
+}
+function SLER(){
+NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+chmod 444 $NAME
+dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
+}
+function SEXE(){
+NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+chmod +x $NAME
+dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
+}
+function LEEX(){
+NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+chmod 555 $NAME
+dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
+}
+function ESEX(){
+NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+chmod 666 $NAME
+dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
+}
+function PETO(){
+NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+chmod 777 $NAME
+dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
+}
+
 function PERM(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0)
-chmod +x $NOME
-dialog --title "Informação" --msgbox "" 0 0
-GARQ
+OPCAO=$(dialog						\
+	--stdout					\
+	--title 'Permissionamento'			\
+	--menu 'Escolha uma opção de Permissionamento'	\
+	0 0 0						\
+	1 'Só Escrever'					\
+	2 'Só Ler'					\
+	3 'Só Executar'					\
+	4 'Ler e Executar'				\
+	5 'Ler e Escrever'				\
+	6 'Escrever e Executar'				\
+	7 'Permissão Total'				\
+	8 'Voltar')
+
+case $OPCAO in
+	1) SESQ ;;
+	2) SLER ;;
+	3) SEXE ;;
+	4) LEEX ;;
+	5) LEES ;;
+	6) ESEX ;;
+	7) PETO ;;
+	8) GARQ ;;
+	*) dialog --title "Opção invalida" --msgbox "Digite Novamente" 0 0 ; GARQ ;;
+esac
 }
 
 function GARQ(){
