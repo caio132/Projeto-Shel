@@ -49,32 +49,32 @@ GARQ
 }
 
 function SESQ(){
-NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
 chmod 222 $NAME
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function SLER(){
-NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
 chmod 444 $NAME
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function SEXE(){
-NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
 chmod +x $NAME
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function LEEX(){
-NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
 chmod 555 $NAME
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function ESEX(){
-NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
 chmod 666 $NAME
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function PETO(){
-NAME=$(dialog --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
+NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
 chmod 777 $NAME
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
