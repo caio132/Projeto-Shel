@@ -408,9 +408,9 @@ OPCAO=$(dialog						\
 	7 "Compilar arquivos com .TAR"			\
 	8 "Compilar arquivos com .TAR.GZ"		\
 	9 "Compilar arquivos com .TAR.BZ2"		\
-	10 "Descompilar arquivos com .TAR"		\
-	11 "Descompilar arquivos com .TAR.GZ"		\
-	12 "Descompilar arquivos com .TAR.BZ2"		\
+	10 "Descompactar arquivos com .TAR"		\
+	11 "Descompactar arquivos com .TAR.GZ"		\
+	12 "Descompactar arquivos com .TAR.BZ2"		\
 	13 "Voltar" )					\
 
 	case $OPCAO in
