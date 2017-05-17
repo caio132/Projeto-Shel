@@ -405,9 +405,9 @@ OPCAO=$(dialog						\
 	4 "Desinstalar pacote"				\
 	5 "Atualizar pacote" 				\
 	6 "Listar pacotes"				\
-	7 "Compilar arquivos com .TAR"			\
-	8 "Compilar arquivos com .TAR.GZ"		\
-	9 "Compilar arquivos com .TAR.BZ2"		\
+	7 "Compactar arquivos com .TAR"			\
+	8 "Compactar arquivos com .TAR.GZ"		\
+	9 "Compactar arquivos com .TAR.BZ2"		\
 	10 "Descompactar arquivos com .TAR"		\
 	11 "Descompactar arquivos com .TAR.GZ"		\
 	12 "Descompactar arquivos com .TAR.BZ2"		\
