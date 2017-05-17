@@ -346,9 +346,9 @@ dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
 GREP
 }
 function AREP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser atualizado" 0 0)
+apt-get dist-upgrade
+dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
 GREP
 }
 function LREP(){
