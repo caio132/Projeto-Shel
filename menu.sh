@@ -334,15 +334,15 @@ dialog --title "Informação" --msgbox "" 0 0
 GREP
 }
 function IPAC(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do pacote a ser instalado" 0 0)
+apt-get install $NOME
+dialog --title "Informação" --msgbox "Pacote instalado com sucesso" 0 0
 GREP
 }
 function DPAC(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser desinstalado" 0 0)
+apt-get remove $NOME
+dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
 GREP
 }
 function AREP(){
