@@ -353,7 +353,7 @@ GREP
 }
 function LREP(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
+tar -tvf $NOME.tar
 dialog --title "Informação" --msgbox "" 0 0
 GREP
 }
