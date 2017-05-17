@@ -322,15 +322,15 @@ GDIS(){
 	esac
 }
 function CCGZIP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser compactado com .gzip" 0 0)
+gzip $NOME
+dialog --title "Informação" --msgbox "Arquivo compactado com sucesso" 0 0
 GREP
 }
 function CGBZIP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser compactado com .bzip2" 0 0)
+bzip2 $NOME
+dialog --title "Informação" --msgbox "Arquivo compactado com sucesso" 0 0
 GREP
 }
 function IPAC(){
@@ -359,38 +359,38 @@ GREP
 }
 function CTAR(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
+tar -zcf $NOME.tar
 dialog --title "Informação" --msgbox "" 0 0
 GREP
 }
 function CTARGZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser compactado com .tar.gz" 0 0)
+tar -czvf $NOME.tar.gz
+dialog --title "Informação" --msgbox "Arquivo compactado com .tar.gz com sucesso" 0 0
 GREP
 }
 function CTARBZ2(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser compactado com .tar.bz2" 0 0)
+tar -jcvf $NOME.tar.bz2
+dialog --title "Informação" --msgbox "Arquivo compactado com .tar.bz2 com sucesso" 0 0
 GREP
 }
 function DTAR(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser descompactado" 0 0)
+tar -xvf $NOME.tar
+dialog --title "Informação" --msgbox "Arquivo descompactado com sucesso" 0 0
 GREP
 }
 function DTARGZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser descompactado" 0 0)
+tar -vzxf $NOME.tar.gz
+dialog --title "Informação" --msgbox "Arquivo descompactado com sucesso" 0 0
 GREP
 }
 function DTARBZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser descompactado" 0 0)
+tar -vxjpf $NOME.tar.bz2
+dialog --title "Informação" --msgbox "Arquivo descompactado com sucesso" 0 0
 GREP
 }
 GREP(){
