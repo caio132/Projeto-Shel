@@ -362,7 +362,7 @@ OPCAO=$(dialog						\
 	3 "Atualizar pacote" 				\
 	4 "Listar pacotes"				\
 	5 "Atualizar sistema"				\
-	5"Voltar" )					\
+	6 "Voltar" )					\
 
 	case $OPCAO in
 
@@ -370,8 +370,8 @@ OPCAO=$(dialog						\
 		2) DPAC	   ;;
 		3) AREP    ;;
 		4) LREP    ;;
-		5)ASIS     ;;
- 	        5) MENU    ;;
+		5) ASIS     ;;
+ 	        6) MENU    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
@@ -694,7 +694,7 @@ OPCAO=$(dialog						\
 	3 "Atualizar pacote" 				\
 	4 "Listar pacotes"				\
 	5 "Atualizar sistema"				\
-	5"Voltar" )					\
+	6"Voltar" )					\
 
 	case $OPCAO in
 
@@ -702,8 +702,8 @@ OPCAO=$(dialog						\
 		2) DPAC	   ;;
 		3) AREP    ;;
 		4) LREP    ;;
-		5)ASIS     ;;
- 	        5) MENU    ;;
+		5) ASIS     ;;
+ 	        6) MENU    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
