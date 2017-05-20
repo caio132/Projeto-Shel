@@ -321,18 +321,6 @@ GDIS(){
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
-function CCGZIP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser compactado com .gzip" 0 0)
-gzip $NOME
-dialog --title "Informação" --msgbox "Arquivo compactado com sucesso" 0 0
-GREP
-}
-function CGBZIP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser compactado com .bzip2" 0 0)
-bzip2 $NOME
-dialog --title "Informação" --msgbox "Arquivo compactado com sucesso" 0 0
-GREP
-}
 function IPAC(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do pacote a ser instalado" 0 0)
 apt-get install $NOME
@@ -347,7 +335,7 @@ GREP
 }
 function AREP(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser atualizado" 0 0)
-apt-get dist-upgrade
+apt-get dist-upgrade $NOME
 dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
 GREP
 }
@@ -357,40 +345,10 @@ tar -tvf $NOME.tar
 dialog --title "Informação" --msgbox "" 0 0
 GREP
 }
-function CTAR(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-tar -zcf $NOME.tar
-dialog --title "Informação" --msgbox "" 0 0
-GREP
-}
-function CTARGZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser compactado com .tar.gz" 0 0)
-tar -czvf $NOME.tar.gz
-dialog --title "Informação" --msgbox "Arquivo compactado com .tar.gz com sucesso" 0 0
-GREP
-}
-function CTARBZ2(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser compactado com .tar.bz2" 0 0)
-tar -jcvf $NOME.tar.bz2
-dialog --title "Informação" --msgbox "Arquivo compactado com .tar.bz2 com sucesso" 0 0
-GREP
-}
-function DTAR(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser descompactado" 0 0)
-tar -xvf $NOME.tar
-dialog --title "Informação" --msgbox "Arquivo descompactado com sucesso" 0 0
-GREP
-}
-function DTARGZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser descompactado" 0 0)
-tar -vzxf $NOME.tar.gz
-dialog --title "Informação" --msgbox "Arquivo descompactado com sucesso" 0 0
-GREP
-}
-function DTARBZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo a ser descompactado" 0 0)
-tar -vxjpf $NOME.tar.bz2
-dialog --title "Informação" --msgbox "Arquivo descompactado com sucesso" 0 0
+function ASIS(){
+NOME=$(dialog --stdout --title "Atualização" --textbox "Atualizando o sistema" 0 0)
+tar -tvf $NOME.tar
+dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
 }
 GREP(){
@@ -399,35 +357,21 @@ OPCAO=$(dialog						\
 	--title "MENU"					\
 	--menu "Escolha uma opção"			\
 	0 0 0						\
-	1 "Compactar com Gzip"				\
-	2 "Compactar com Bzip2"				\
-	3 "Instalar pacote"				\
-	4 "Desinstalar pacote"				\
-	5 "Atualizar pacote" 				\
-	6 "Listar pacotes"				\
-	7 "Compactar arquivos com .TAR"			\
-	8 "Compactar arquivos com .TAR.GZ"		\
-	9 "Compactar arquivos com .TAR.BZ2"		\
-	10 "Descompactar arquivos com .TAR"		\
-	11 "Descompactar arquivos com .TAR.GZ"		\
-	12 "Descompactar arquivos com .TAR.BZ2"		\
-	13 "Voltar" )					\
+	1 "Instalar pacote"				\
+	2 "Desinstalar pacote"				\
+	3 "Atualizar pacote" 				\
+	4 "Listar pacotes"				\
+	5 "Atualizar sistema"				\
+	5"Voltar" )					\
 
 	case $OPCAO in
 
-		1) CCGZIP  ;;
-		2) CGBZIP  ;;
-		3) IPAC    ;;
-		4) DPAC	   ;;
-		5) AREP    ;;
-		6) LREP    ;;
- 		7) CTAR    ;;
- 		8) CTARGZ  ;;
-		9) CTARBZ2 ;;
-	       10) DTAR    ;;
-	       11) DTARGZ  ;;
-	       12) DTARBZ  ;;
-	       13) MENU    ;;
+		1) IPAC    ;;
+		2) DPAC	   ;;
+		3) AREP    ;;
+		4) LREP    ;;
+		5)ASIS     ;;
+ 	        5) MENU    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
@@ -709,117 +653,60 @@ GDIS(){
 	esac
 }
 
-function CCGZIP(){
-NOME=$(dialog --stdout --tite "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" "" 0 
-GREP
-}
-function CGBZIP(){
-NOME=$(dialog --stdout --tite "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" "" 0 
-GREP
-}
 function IPAC(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do pacote a ser instalado" 0 0)
+apt-get install $NOME
+dialog --title "Informação" --msgbox "Pacote instalado com sucesso" 0 0
 GREP
 }
 function DPAC(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser desinstalado" 0 0)
+apt-get remove $NOME
+dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
 GREP
 }
 function AREP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser atualizado" 0 0)
+apt-get dist-upgrade $NOME
+dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
 GREP
 }
 function LREP(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
+tar -tvf $NOME.tar
 dialog --title "Informação" --msgbox "" 0 0
 GREP
 }
-function CTAR(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
-GREP
-}
-function CTARGZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
-GREP
-}
-function CTARBZ2(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
-GREP
-}
-function DTAR(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
-GREP
-}
-function DTARGZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
-GREP
-}
-function DTARBZ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-$NOME
-dialog --title "Informação" --msgbox "" 0 0
+function ASIS(){
+NOME=$(dialog --stdout --title "Atualização" --textbox "Atualizando o sistema" 0 0)
+tar -tvf $NOME.tar
+dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
 }
 GREP(){
 OPCAO=$(dialog						\
 	--stdout 					\
-	--title "MENU2"					\
+	--title "MENU"					\
 	--menu "Escolha uma opção"			\
 	0 0 0						\
-	1 "Compactar com Gzip"				\
-	2 "Compactar com Bzip2"				\
-	3 "Instalar pacote"				\
-	4 "Desinstalar pacote"				\
-	5 "Atualizar pacote" 				\
-	6 "Listar pacotes"				\
-	7 "Compilar arquivos com .TAR"			\
-	8 "Compilar arquivos com .TAR.GZ"		\
-	9 "Compilar arquivos com .TAR.BZ2"		\
-	10 "Descompilar arquivos com .TAR"		\
-	11 "Descompilar arquivos com .TAR.GZ"		\
-	12 "Descompilar arquivos com .TAR.BZ2"		\
-	13 "Voltar" )					\
+	1 "Instalar pacote"				\
+	2 "Desinstalar pacote"				\
+	3 "Atualizar pacote" 				\
+	4 "Listar pacotes"				\
+	5 "Atualizar sistema"				\
+	5"Voltar" )					\
 
 	case $OPCAO in
 
-		1) CCGZIP  ;;
-		2) CGBZIP  ;;
-		3) IPAC    ;;
-		4) DPAC	   ;;
-		5) AREP    ;;
-		6) LREP    ;;
- 		7) CTAR    ;;
- 		8) CTARGZ  ;;
-		9) CTARBZ2 ;;
-	       10) DTAR    ;;
-	       11) DTARGZ  ;;
-	       12) DTARBZ  ;;
-	       13) MENU2    ;;
+		1) IPAC    ;;
+		2) DPAC	   ;;
+		3) AREP    ;;
+		4) LREP    ;;
+		5)ASIS     ;;
+ 	        5) MENU    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
-
 function MENU2(){
 OPCAO=$(dialog					\
 	--stdout				\
