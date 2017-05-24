@@ -51,16 +51,15 @@ FIM(){
 
 GARQ=$(){
 function LRES(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-> $NOME
-dialog --title "Informação" --msgbox "Arquivo criado com Sucesso" 0 0
+ifconfig > /tmp/lsredes.txt
+dialog --textbox /tmp/lsredes.txt 0 0
 GRES
 }
 
 function LREES(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-rm -r $NOME
-dialog --title "Informação" --msgbox "Arquivo apagado com Sucesso" 0 0
+ifconfig $NOME > /tmp/lisconf.txt
+dialog --textbox /tmp/lisconf.txt
 GRES
 }
 
@@ -72,16 +71,16 @@ GRES
 }
 
 function DPRE(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-rmdir $NOME
-dialog --title "Informação" --msgbox "Arquivo criado com Sucesso" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Desativar rede" 0 0)
+ifconfig eth0 down
+dialog --title "Informação" --msgbox "Rede desativada com sucesso" 0 0
 GRES
 }
 
 function APRE(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-mv $NOME $ 
-dialog --title "Informação" --msgbox "Arquivo criado com Sucesso" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Ativar rede" 0 0)
+ifconfig eth0 up
+dialog --title "Informação" --msgbox "Rede ativada com sucesso" 0 0
 GRES
 }
 
