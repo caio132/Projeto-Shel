@@ -55,8 +55,8 @@ GARQ
 }
 function LARQ(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o caminho" 0 0)
-ls -la > /tmp/listar.txt
-dialog --title "Listar" --textbox /tmp/listar.txt 0 0
+ls -la $NOME > /tmp/listar.txt
+dialog --textbox /tmp/listar.txt 0 0
 GARQ
 }
 function SESQ(){
