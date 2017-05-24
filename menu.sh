@@ -265,52 +265,42 @@ CTEC(){
 GDIS
 }
 IBAT(){
-clear
-acpi -V
-echo 'Digite [enter] para voltar'
-read xxx
+acpi -V > /tmp/lsacpi.txt
+dialog --textbox /tmp/lsacpi.txt 0 0
 GDIS
 }
 ICPU(){
-clear
-lscpu
-echo 'Digite [enter] para voltar'
-read xxx
+lscpu > /tmp/lscpu.txt
+dialog --textbox /tmp/lscpu.txt 0 0
 GDIS
 }
 IMEM(){
 clear
-free -h
-echo 'Digite [enter] para voltar'
-read xxx
+free -h ?> /tmp/lsimem.txt
+dialog --textbox /tmp/lsimem.txt 0 0
 GDIS
 }
 VDSO(){
 clear
-lsb_release -a
-echo 'Digite [enter] para voltar'
-read xxx
+lsb_release -a > /tmp/lslsb.txt
+dialog --textbox /tmp/lslsb.txt 0 0
 GDIS
 }
 VKER(){
 clear
-uname -r
-echo 'Digite [enter] para voltar'
-read xxx
-GDIS
+uname -r > /tmp/lsunam.txt
+dialog --textbox /tmp/lsunam.txt 0 0
 }
 IPVI(){
 clear
-lspci | grep -i vga
-echo 'Digite [enter] para voltar'
-read xxx
+lspci | grep -i vga > tmp/lsgrepi.txt
+dialog --textbox /tmp/lsgrepi.txt 0 0
 GDIS
 }
 TPCL(){
 clear
-uptime
-echo 'Digite [enter] para voltar'
-read xxx
+uptime > /tmp/lsupti_me.txt
+dialog --textbox /tmp/lsupti_me.txt 0 0
 GDIS
 }
 GDIS(){
