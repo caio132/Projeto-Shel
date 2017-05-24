@@ -86,22 +86,21 @@ GRES
 
 function VRFI(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-cp $NOME $
+
 dialog --title "Informação" --msgbox "Arquivo criado com Sucesso" 0 0
 GRES
 }
 
 function MMAC(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-ls -la $NOME
+
 dialog --title "Informação" --msgbox "Arquivo criado com Sucesso" 0 0
 GRES
 }
 
 function RSIS(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-chmod +x $NOME
-dialog --title "Informação" --msgbox "Arquivo criado com Sucesso" 0 0
+/etc/init.d/networkin restart 
+dialog --title "Informação" --msgbox "Sistema reiniciado com sucesso" 0 0
 GRES
 }
 while [[ $TEMP != 0 ]]; do
