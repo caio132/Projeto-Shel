@@ -53,7 +53,7 @@ FIM(){
 
 GARQ=$(){
 function LRES(){
-ifconfig > /tmp/lsredes.txt
+ip addr > /tmp/lsredes.txt
 dialog --textbox /tmp/lsredes.txt 0 0
 GRES
 }
