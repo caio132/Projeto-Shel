@@ -4,6 +4,7 @@ USER="Chefe"
 PASS="123"
 USER1="Estagiario"
 PASS1="132"
+
 function CARQ(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo" 0 0)
 > $NOME
@@ -339,6 +340,12 @@ apt-get dist-upgrade $NOME
 dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
 GREP
 }
+function ASIS(){
+NOME=$(dialog --stdout --title "Nome" --inputbox "Atualização do sistema" 0 0)
+apt-get update
+dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
+GREP
+}
 function LREP(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
 tar -tvf $NOME.tar
@@ -360,18 +367,20 @@ OPCAO=$(dialog						\
 	1 "Instalar pacote"				\
 	2 "Desinstalar pacote"				\
 	3 "Atualizar pacote" 				\
-	4 "Listar pacotes"				\
-	5 "Atualizar sistema"				\
-	6 "Voltar" )					\
+	4 "Atualizar sistemas"				\
+	5 "Listar pacotes"				\
+	6 "Atualizar sistema"				\
+	7 "Voltar" )					\
 
 	case $OPCAO in
 
 		1) IPAC    ;;
 		2) DPAC	   ;;
 		3) AREP    ;;
-		4) LREP    ;;
-		5) ASIS     ;;
- 	        6) MENU    ;;
+		4) ASIS    ;;
+		5) LREP    ;;
+		6) ASIS     ;;
+ 	        7) MENU    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
@@ -652,7 +661,6 @@ GDIS(){
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
-
 function IPAC(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do pacote a ser instalado" 0 0)
 apt-get install $NOME
@@ -669,6 +677,12 @@ function AREP(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser atualizado" 0 0)
 apt-get dist-upgrade $NOME
 dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
+GREP
+}
+function ASIS(){
+NOME=$(dialog --stdout --title "Nome" --inputbox "Atualização do sistema" 0 0)
+apt-get update
+dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
 GREP
 }
 function LREP(){
@@ -692,18 +706,20 @@ OPCAO=$(dialog						\
 	1 "Instalar pacote"				\
 	2 "Desinstalar pacote"				\
 	3 "Atualizar pacote" 				\
-	4 "Listar pacotes"				\
-	5 "Atualizar sistema"				\
-	6"Voltar" )					\
+	4 "Atualizar sistemas"				\
+	5 "Listar pacotes"				\
+	6 "Atualizar sistema"				\
+	7 "Voltar" )					\
 
 	case $OPCAO in
 
 		1) IPAC    ;;
 		2) DPAC	   ;;
 		3) AREP    ;;
-		4) LREP    ;;
-		5) ASIS     ;;
- 	        6) MENU    ;;
+		4) ASIS    ;;
+		5) LREP    ;;
+		6) ASIS     ;;
+ 	        7) MENU    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
