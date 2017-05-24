@@ -21,8 +21,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Arquivo apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox " Arquivo não encontrado" 0 0
-  case
- fi
+fi
 GARQ
 }
 function CDIR(){
@@ -38,8 +37,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Diretorio apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox " Diretorio não encontrado" 0 0
-  case
- fi
+fi
 dialog --title "Informação" --msgbox "Diretorio apagado com sucesso" 0 0
 GARQ
 }
@@ -162,8 +160,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Usuario apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox " Usuario não encontrado" 0 0
-  case
- fi
+fi
 GUSR
 }
 function CGRU(){
@@ -179,8 +176,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Grupo apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox "Grupo não encontrado" 0 0
-  case
- fi
+fi
 GUSR
 }
 function ASEN(){
@@ -359,8 +355,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox " Pacote não encontrado" 0 0
-  case
- fi
+fi
 GREP
 }
 function AREP(){
@@ -477,8 +472,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Arquivo apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox " Arquivo não encontrado" 0 0
-  case
- fi
+fi
 GARQ
 }
 function CDIR(){
@@ -494,8 +488,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Diretorio apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox "Diretorio não encontrado" 0 0
-  case
- fi
+fi
 GARQ
 }
 function MARQ(){
@@ -503,7 +496,6 @@ NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretor
 mv $NOME /home/vagrant/
 dialog --title "Informação" --msgbox "Arquivo/Diretorio movido com sucesso" 0 0
 GARQ
-
 }
 function CDIR(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0)
@@ -558,8 +550,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Usuario apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox "Usuario não encontrado" 0 0
-  case
- fi
+fi
 GUSR
 }
 function CGRU(){
@@ -575,8 +566,7 @@ if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Grupo apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox "Grupo não encontrado" 0 0
-  case
- fi
+fi
 dialog --title "Informação" --msgbox "Grupo apagado com sucesso" 0 0
 GUSR
 }
@@ -720,7 +710,10 @@ GREP
 function DPAC(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser desinstalado" 0 0)
 apt-get remove $NOME
-dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgobx "Pacote não encontrado" 0 0
 GREP
 }
 function AREP(){
@@ -803,19 +796,5 @@ function FIM(){
 	exit 0
 }
 clear
-#read -p "Usuario: " USUARIO
-USUARIO=$(dialog					\
-		--stdout				\
-		--title "Login"				\
-		--inputbox "Digite seu usuario"		\
-		0 0)
-
-#read -s -p "Senha:" SENHA
-SENHA=$(dialog						\
-		--stdout				\
-		--title "Senha"				\
-		--passwordbox "Digite sua senha"	\
-		0 0)
-
 
 [ $USUARIO == $USER1 ] && [ $SENHA == $PASS1 ] && MENU2 || FIM
