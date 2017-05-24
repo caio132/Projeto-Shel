@@ -86,10 +86,11 @@ read xxx
 GREP
 }
 ICPU(){
-clear
-lscpu
-echo 'Digite [enter] para voltar'
-read xxx
+#clear
+lscpu > /tmp/lscpu.txt
+dialog --textbox /tmp/lscpu.txt 0 0
+#echo 'Digite [enter] para voltar'
+#read xxx
 GREP
 }
 IMEM(){
@@ -100,10 +101,10 @@ read xxx
 GREP
 }
 VDSO(){
-clear
-lsb_release -a
-echo 'Digite [enter] para voltar'
-read xxx
+lsb_release -a > /tmp/lsb_releasea.txt
+dialog --textbox /tmp/lsb_releasea.txt 0 0
+#echo 'Digite [enter] para voltar'
+#read xxx
 GREP
 }
 VKER(){
@@ -115,9 +116,10 @@ GREP
 }
 IPVI(){
 clear
-lspci | grep -i vga
-echo 'Digite [enter] para voltar'
-read xxx
+lspci | grep -i vga > /tmp/lspcivga.txt
+dialog --textbox /tmp/lspcivga.txt 0 0
+#echo 'Digite [enter] para voltar'
+#read xxx
 GREP
 }
 TPCL(){
