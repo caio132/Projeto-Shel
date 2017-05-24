@@ -27,7 +27,8 @@ OPCAO=$(dialog					\
 	6 "Visualizar redes fisicas "		\
 	7 "Mudar MAC"				\
 	8 "Reiniciar Sistema"			\
-	9 "Sair")
+	9 "Adicionar nova rede" 		\
+	10 "Sair")
 
 	case $OPCAO in
 
@@ -39,7 +40,8 @@ OPCAO=$(dialog					\
 		6) VRFI ;;
 		7) MMAC ;;
 		8) RSIS ;;
-		9) FIM ;;
+		9) ARED ;;
+		10) FIM ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; MENU ;;
 	esac
 }
@@ -101,6 +103,11 @@ GRES
 function RSIS(){
 /etc/init.d/networkin restart 
 dialog --title "Informação" --msgbox "Sistema reiniciado com sucesso" 0 0
+GRES
+}
+function ARED(){
+
+
 GRES
 }
 while [[ $TEMP != 0 ]]; do
