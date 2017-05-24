@@ -350,25 +350,19 @@ GREP
 }
 function AREP(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser atualizado" 0 0)
-apt-get dist-upgrade $NOME
+apt-get dist-upgrade 
 dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
 GREP
 }
-function ASIS(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Atualização do sistema" 0 0)
-apt-get update
-dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
-GREP
-}
 function LREP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-tar -tvf $NOME.tar
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote" 0 0)
+$NOME > /tmp/lispar.txt ????
+dialog --textbox /tmp/lispas.txt 0 0
 GREP
 }
-function ASIS(){
+function APA(){
 NOME=$(dialog --stdout --title "Atualização" --textbox "Atualizando o sistema" 0 0)
-tar -tvf $NOME.tar
+apt-get update 
 dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
 }
@@ -380,11 +374,10 @@ OPCAO=$(dialog						\
 	0 0 0						\
 	1 "Instalar pacote"				\
 	2 "Desinstalar pacote"				\
-	3 "Atualizar pacote" 				\
-	4 "Atualizar sistemas"				\
-	5 "Listar pacotes"				\
-	6 "Atualizar sistema"				\
-	7 "Voltar" )					\
+	3 "Atualizar sistema" 				\
+	4 "Listar pacotes"				\
+	5 "Atualizar pacotes"				\
+	6 "Voltar" )					\
 
 	case $OPCAO in
 
@@ -392,9 +385,9 @@ OPCAO=$(dialog						\
 		2) DPAC	   ;;
 		3) AREP    ;;
 		4) ASIS    ;;
-		5) LREP    ;;
-		6) ASIS     ;;
- 	        7) MENU    ;;
+		4) LREP    ;;
+		5) APA     ;;
+ 	        6) MENU    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
