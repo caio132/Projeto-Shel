@@ -59,14 +59,14 @@ GRES
 function LREES(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
 ifconfig $NOME > /tmp/lisconf.txt
-dialog --textbox /tmp/lisconf.txt
+dialog --textbox /tmp/lisconf.txt 0 0
 GRES
 }
 
 function CRMA(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do diretorio" 0 0)
-mkdir $NOME
-dialog --title "Informação" --msgbox "Diretorio criado com Sucesso" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "" 0 0)
+
+dialog --title "Informação" --msgbox "" 0 0
 GRES
 }
 
