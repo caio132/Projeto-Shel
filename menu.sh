@@ -1,4 +1,7 @@
 #!/bin/bash
+clear
+apt-get install dialog
+clear
 
 USER="Chefe"
 PASS="123"
@@ -14,7 +17,12 @@ GARQ
 function AARQ(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo" 0 0)
 rm -r $NOME
-dialog --title "Informação" --msgbox "Arquivo apagado sucesso" 0 0
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Arquivo apagado sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox " Arquivo não encontrado" 0 0
+  case
+ fi
 GARQ
 }
 function CDIR(){
@@ -26,6 +34,12 @@ GARQ
 function ADIR(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do diretorio" 0 0)
 rm -r $NOME
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Diretorio apagado sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox " Diretorio não encontrado" 0 0
+  case
+ fi
 dialog --title "Informação" --msgbox "Diretorio apagado com sucesso" 0 0
 GARQ
 }
@@ -144,7 +158,12 @@ GUSR
 function AUSR(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do Usuário" 0 0 )
 userdel $NOME
-dialog --title "Informação" --msgbox "Usuário apagado com sucesso" 0 0
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Usuario apagado sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox " Usuario não encontrado" 0 0
+  case
+ fi
 GUSR
 }
 function CGRU(){
@@ -156,7 +175,12 @@ GUSR
 function AGRU(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do grupo" 0 0 )
 groupdel $NOME
-dialog --title "Informação" --msgbox "Grupo apagado com sucesso" 0 0
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Grupo apagado sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox "Grupo não encontrado" 0 0
+  case
+ fi
 GUSR
 }
 function ASEN(){
@@ -331,7 +355,12 @@ GREP
 function DPAC(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser desinstalado" 0 0)
 apt-get remove $NOME
-dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox " Pacote não encontrado" 0 0
+  case
+ fi
 GREP
 }
 function AREP(){
@@ -444,7 +473,12 @@ GARQ
 function AARQ(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo" 0 0)
 rm -r $NOME
-dialog --title "Informação" --msgbox "Arquivo apagado sucesso" 0 0
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Arquivo apagado sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox " Arquivo não encontrado" 0 0
+  case
+ fi
 GARQ
 }
 function CDIR(){
@@ -456,7 +490,12 @@ GARQ
 function ADIR(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do diretorio" 0 0)
 rm -r $NOME
-dialog --title "Informação" --msgbox "Diretorio apagado com sucesso" 0 0
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Diretorio apagado sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox "Diretorio não encontrado" 0 0
+  case
+ fi
 GARQ
 }
 function MARQ(){
@@ -515,7 +554,12 @@ GUSR
 function AUSR(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do Usuário" 0 0 )
 userdel $NOME
-dialog --title "Informação" --msgbox "Usuário apagado com sucesso" 0 0
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Usuario apagado sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox "Usuario não encontrado" 0 0
+  case
+ fi
 GUSR
 }
 function CGRU(){
@@ -527,6 +571,12 @@ GUSR
 function AGRU(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do grupo" 0 0 )
 groupdel $NOME
+if [[ $? == "0" ]]; then
+	dialog --title "Informação" --msgbox "Grupo apagado sucesso" 0 0
+   else
+   	dialog --title "Informação" --msgbox "Grupo não encontrado" 0 0
+  case
+ fi
 dialog --title "Informação" --msgbox "Grupo apagado com sucesso" 0 0
 GUSR
 }
