@@ -10,14 +10,14 @@ PASS1="132"
 
 function CARQ(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo" 0 0)
-> $NOME
+> $NOME #
 dialog --title "Informação" --msgbox "Arquivo criado sucesso" 0 0
 GARQ
 }
 function AARQ(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo" 0 0)
-rm -r $NOME
-if [[ $? == "0" ]]; then
+rm -r $NOME #
+if [[ $? == "0" ]]; then #
 	dialog --title "Informação" --msgbox "Arquivo apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox " Arquivo não encontrado" 0 0
@@ -26,69 +26,68 @@ GARQ
 }
 function CDIR(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do diretorio" 0 0)
-mkdir $NOME
+mkdir $NOME #
 dialog --title "Informação" --msgbox "Diretorio criado sucesso" 0 0
 GARQ
 }
 function ADIR(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do diretorio" 0 0)
-rm -r $NOME
-if [[ $? == "0" ]]; then
+rm -r $NOME #
+if [[ $? == "0" ]]; then #
 	dialog --title "Informação" --msgbox "Diretorio apagado sucesso" 0 0
    else
    	dialog --title "Informação" --msgbox " Diretorio não encontrado" 0 0
 fi
 GARQ
 }
-function MARQ(){
+function MARQ(){ 
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0)
-mv $NOME /home/vagrant/
+mv $NOME /home/vagrant/ #
 dialog --title "Informação" --msgbox "Arquivo/Diretorio movido com sucesso" 0 0
 GARQ
 }
 function CDIR(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0)
-cp $NOME /home/vagrant/
+cp $NOME /home/vagrant/ #
 dialog --title "Informação" --msgbox "Arquivo/Diretorio copiado com sucesso" 0 0
 GARQ
 }
 function LARQ(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o caminho" 0 0)
-ls -la $NOME > /tmp/listar.txt
+ls -la $NOME > /tmp/listar.txt #
 dialog --textbox /tmp/listar.txt 0 0
 GARQ
 }
 function SESQ(){
 NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
-chmod 222 $NAME
+chmod 222 $NAME #
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function SLER(){
 NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
-chmod 444 $NAME
+chmod 444 $NAME #
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function SEXE(){
 NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
-chmod +x $NAME
+chmod +x $NAME #
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function LEEX(){
 NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
-chmod 555 $NAME
+chmod 555 $NAME #
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function ESEX(){
 NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
-chmod 666 $NAME
+chmod 666 $NAME #
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
 function PETO(){
 NAME=$(dialog --stdout --title 'Nome' --inputbox 'Insira o nome do Arquivo para "Permissionar" ' 0 0)
-chmod 777 $NAME
+chmod 777 $NAME #
 dialog --title 'Informação' --msgbox 'Permissionado com sucesso' 0 0
 }
-
 function PERM(){
 OPCAO=$(dialog						\
 	--stdout					\
@@ -148,13 +147,13 @@ OPCAO=$(dialog					\
 }
 function CUSR(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do usuário" 0 0 )
-useradd $NOME
+useradd $NOME #
 dialog --title "Informação" --msgbox "Usuário criado com sucesso" 0 0
 GUSR
 }
 function AUSR(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do Usuário" 0 0 )
-userdel $NOME
+userdel $NOME #
 if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Usuario apagado sucesso" 0 0
    else
@@ -164,13 +163,13 @@ GUSR
 }
 function CGRU(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do grupo" 0 0 )
-groupadd $NOME
+groupadd $NOME #
 dialog --title "Informação" --msgbox "Grupo criado sucesso" 0 0
 GUSR
 }
 function AGRU(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do grupo" 0 0 )
-groupdel $NOME
+groupdel $NOME #
 if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Grupo apagado sucesso" 0 0
    else
@@ -180,33 +179,34 @@ GUSR
 }
 function ASEN(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do usuário" 0 0 )
-passwd $NOME
+passwd $NOME #
 dialog --title "Informação" --msgbox "Senha Alterada com sucesso" 0 0
 GUSR
 }
 function PERMI(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do usuário ou grupo" 0 0 )
-chmod 775 $NOME
+chmod 775 $NOME #
 dialog --title "Informação" --msgbox "Permissão alterada com sucesso" 0 0
 GUSR
 }
 function MDON(){
 ARQUIVO=$( dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0 )
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do novo dono" 0 0 )
-chown -R $NOME $ARQUIVO
+chown -R $NOME $ARQUIVO #
 dialog --title "Informação" --msgbox "Dono alterado com sucesso" 0 0
 GUSR
 }
 function INFO(){
 NOME=$( dialog --stdout --title 'Nome' --inputbox 'Digite o nome do Usuário' 0 0 )
-id $NOME
-sleep 3
+id $NOME > /tmp/infor.txt #
+dialog --textbox /tmp/infor.txt 0 0
 GUSR
 }
 function MGRU(){
 NOME=$( dialog --stdout --title 'Nome' --inputbox 'Digite o nome do Usuário' 0 0 )
 GRUPO=$( dialog --stdout --title 'Nome' --inputbox 'Digite o nome do Grupo' 0 0 )
-usermod -G $GRUPO $NOME
+usermod -G $GRUPO $NOME #
+dialog --title "Informação" --msgbox "Usuario mudado com sucesso" 
 GUSR
 }
 GUSR(){
@@ -242,13 +242,13 @@ OPCAO=$(dialog				\
 	esac
 }
 function LRES(){
-ip addr > /tmp/lsredes.txt
+ip addr > /tmp/lsredes.txt #
 dialog --textbox /tmp/lsredes.txt 0 0
 GRES
 }
 function LREES(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-ifconfig $NOME > /tmp/lisconf.txt
+ifconfig $NOME > /tmp/lisconf.txt #
 dialog --textbox /tmp/lisconf.txt 0 0
 GRES
 }
@@ -344,41 +344,41 @@ CTEC(){
 GDIS
 }
 IBAT(){
-acpi -V > /tmp/lsacpi.txt
+acpi -V > /tmp/lsacpi.txt #
 dialog --textbox /tmp/lsacpi.txt 0 0
 GDIS
 }
 ICPU(){
-lscpu > /tmp/lscpu.txt
+lscpu > /tmp/lscpu.txt #
 dialog --textbox /tmp/lscpu.txt 0 0
 GDIS
 }
 IMEM(){
 clear
-free -h ?> /tmp/lsimem.txt
+free -h > /tmp/lsimem.txt #
 dialog --textbox /tmp/lsimem.txt 0 0
 GDIS
 }
 VDSO(){
 clear
-lsb_release -a > /tmp/lslsb.txt
+lsb_release -a > /tmp/lslsb.txt #
 dialog --textbox /tmp/lslsb.txt 0 0
 GDIS
 }
 VKER(){
 clear
-uname -r > /tmp/lsunam.txt
+uname -r > /tmp/lsunam.txt #
 dialog --textbox /tmp/lsunam.txt 0 0
 }
 IPVI(){
 clear
-lspci | grep -i vga > tmp/lsgrepi.txt
+lspci | grep -i vga > tmp/lsgrepi.txt #
 dialog --textbox /tmp/lsgrepi.txt 0 0
 GDIS
 }
 TPCL(){
 clear
-uptime > /tmp/lsupti_me.txt
+uptime > /tmp/lsupti_me.txt #
 dialog --textbox /tmp/lsupti_me.txt 0 0
 GDIS
 }
@@ -406,7 +406,7 @@ GDIS(){
 		5) VDSO ;;
 		6) VKER ;;
 		7) IPVI ;;
-		8) TPCL ;;
+		8) TPCL ;;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 		9) MENU ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
