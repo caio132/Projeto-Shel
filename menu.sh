@@ -428,7 +428,8 @@ fi
 GREP
 }
 function AREP(){
-apt-get dist-upgrade 
+apt-get dist-upgrade > /tmp/disup.txt
+dialog --textbox /tmp/disup.txt
 dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
 GREP
 }
@@ -439,7 +440,8 @@ dialog --textbox /tmp/lispas.txt 0 0
 GREP
 }
 function APA(){
-apt-get update 
+apt-get update > /tmp/updta.txt
+dialog --textbox /tmp/updta.txt
 dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
 }
@@ -767,7 +769,8 @@ fi
 GREP
 }
 function AREP(){
-apt-get dist-upgrade 
+apt-get dist-upgrade > /tmp/disup.txt
+dialog --textbox /tmp/disup.txt
 dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
 GREP
 }
@@ -778,7 +781,8 @@ dialog --textbox /tmp/lispas.txt 0 0
 GREP
 }
 function APA(){
-apt-get update 
+apt-get update > /tmp/updta.txt
+dialog --textbox /tmp/updta.txt
 dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
 }
