@@ -38,7 +38,6 @@ if [[ $? == "0" ]]; then
    else
    	dialog --title "Informação" --msgbox " Diretorio não encontrado" 0 0
 fi
-dialog --title "Informação" --msgbox "Diretorio apagado com sucesso" 0 0
 GARQ
 }
 function MARQ(){
@@ -182,20 +181,20 @@ GUSR
 function ASEN(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do usuário" 0 0 )
 passwd $NOME
-dialog --title "Informação" --msgbox "Senha Alterada sem maiúsculo com sucesso" 0 0
+dialog --title "Informação" --msgbox "Senha Alterada com sucesso" 0 0
 GUSR
 }
 function PERMI(){
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do usuário ou grupo" 0 0 )
 chmod 775 $NOME
-dialog --title "Informação" --msgbox "Usuário/Grupo criado com sucesso" 0 0
+dialog --title "Informação" --msgbox "Permissão alterada com sucesso" 0 0
 GUSR
 }
 function MDON(){
 ARQUIVO=$( dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0 )
 NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do novo dono" 0 0 )
 chown -R $NOME $ARQUIVO
-dialog --title "Informação" --msgbox "Domo alterado com sucesso" 0 0
+dialog --title "Informação" --msgbox "Dono alterado com sucesso" 0 0
 GUSR
 }
 function INFO(){
@@ -223,8 +222,8 @@ OPCAO=$(dialog				\
 	5 "Adicionar Senha a um Usuário"\
 	6 "Permissionameto"		\
 	7 "Mudar o dono de um arquivo"	\
-	8 "Mudar o grupo de um usuário"	\
-	9 'Informações do usuário'	\
+	8 "Informações do usuário"	\
+	9 'Mudar o grupo de um usuário'	\
 	10 "Voltar")
 
 	case $OPCAO in
@@ -236,8 +235,8 @@ OPCAO=$(dialog				\
 		5) ASEN ;;
 		6) PERMI ;;
 		7) MDON ;;
-		8) MGRU ;;
-		9) INFO ;;
+		8) INFO ;;
+		9) MGRU ;;
                10) MENU ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GUSR ;;
 	esac
@@ -349,9 +348,8 @@ fi
 GREP
 }
 function AREP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser atualizado" 0 0)
 apt-get dist-upgrade 
-dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
+dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
 GREP
 }
 function LREP(){
@@ -361,7 +359,6 @@ dialog --textbox /tmp/lispas.txt 0 0
 GREP
 }
 function APA(){
-NOME=$(dialog --stdout --title "Atualização" --textbox "Atualizando o sistema" 0 0)
 apt-get update 
 dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
@@ -487,7 +484,7 @@ dialog --title "Informação" --msgbox "Arquivo/Diretorio copiado com sucesso" 0
 GARQ
 }
 function LARQ(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o caminho" 0 0)
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquuivo/diretorio a ser listado" 0 0)
 ls -la > /tmp/listar.txt
 dialog --title "Listar" --textbox /tmp/listar.txt 0 0
 GARQ
@@ -537,7 +534,7 @@ fi
 GUSR
 }
 function CGRU(){
-NOME=$( dialog --stdout --title "Nome" --inputbox "Digite nome do grupo" 0 0 )
+NOME=$( dialog --stdout --title "Nome" --inputbox "Digite o nome do grupo" 0 0 )
 groupadd $NOME
 dialog --title "Informação" --msgbox "Grupo criado sucesso" 0 0
 GUSR
@@ -550,7 +547,6 @@ if [[ $? == "0" ]]; then
    else
    	dialog --title "Informação" --msgbox "Grupo não encontrado" 0 0
 fi
-dialog --title "Informação" --msgbox "Grupo apagado com sucesso" 0 0
 GUSR
 }
 function INFO(){
@@ -607,58 +603,48 @@ CTEC(){
 GDIS
 }
 IBAT(){
-clear
-acpi -V
-echo 'Digite [enter] para voltar'
-read xxx
+acpi -V > /tmp/lsacpi.txt
+dialog --textbox /tmp/lsacpi.txt 0 0
 GDIS
 }
 ICPU(){
-clear
-lscpu
-echo 'Digite [enter] para voltar'
-read xxx
+lscpu > /tmp/lscpu.txt
+dialog --textbox /tmp/lscpu.txt 0 0
 GDIS
 }
 IMEM(){
 clear
-free -h
-echo 'Digite [enter] para voltar'
-read xxx
+free -h ?> /tmp/lsimem.txt
+dialog --textbox /tmp/lsimem.txt 0 0
 GDIS
 }
 VDSO(){
 clear
-lsb_release -a
-echo 'Digite [enter] para voltar'
-read xxx
+lsb_release -a > /tmp/lslsb.txt
+dialog --textbox /tmp/lslsb.txt 0 0
 GDIS
 }
 VKER(){
 clear
-uname -r
-echo 'Digite [enter] para voltar'
-read xxx
-GDIS
+uname -r > /tmp/lsunam.txt
+dialog --textbox /tmp/lsunam.txt 0 0
 }
 IPVI(){
 clear
-lspci | grep -i vga
-echo 'Digite [enter] para voltar'
-read xxx
+lspci | grep -i vga > tmp/lsgrepi.txt
+dialog --textbox /tmp/lsgrepi.txt 0 0
 GDIS
 }
 TPCL(){
 clear
-uptime
-echo 'Digite [enter] para voltar'
-read xxx
+uptime > /tmp/lsupti_me.txt
+dialog --textbox /tmp/lsupti_me.txt 0 0
 GDIS
 }
 GDIS(){
 	OPCAO=$(dialog						\
 		--stdout					\
-		--title 'MENU2'					\
+		--title 'Gerenciar Dispositivo'			\
 		--menu 'Escolha uma opção'			\
 		0 0 0						\
 		1 'Configurar Teclado'				\
@@ -678,7 +664,7 @@ GDIS(){
 		4) IMEM ;;
 		5) VDSO ;;
 		6) VKER ;;
-		6) IPVI ;;
+		7) IPVI ;;
 		8) TPCL ;;
 		9) MENU2 ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
@@ -696,46 +682,38 @@ apt-get remove $NOME
 if [[ $? == "0" ]]; then
 	dialog --title "Informação" --msgbox "Pacote desinstalado com sucesso" 0 0
    else
-   	dialog --title "Informação" --msgobx "Pacote não encontrado" 0 0
+   	dialog --title "Informação" --msgbox " Pacote não encontrado" 0 0
+fi
 GREP
 }
 function AREP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote a ser atualizado" 0 0)
-apt-get dist-upgrade $NOME
-dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
-GREP
-}
-function ASIS(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Atualização do sistema" 0 0)
-apt-get update
+apt-get dist-upgrade 
 dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
 GREP
 }
 function LREP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do arquivo" 0 0)
-tar -tvf $NOME.tar
-dialog --title "Informação" --msgbox "" 0 0
+NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote" 0 0)
+$NOME > /tmp/lispar.txt ????
+dialog --textbox /tmp/lispas.txt 0 0
 GREP
 }
-function ASIS(){
-NOME=$(dialog --stdout --title "Atualização" --textbox "Atualizando o sistema" 0 0)
-tar -tvf $NOME.tar
+function APA(){
+apt-get update 
 dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
 }
 GREP(){
 OPCAO=$(dialog						\
 	--stdout 					\
-	--title "MENU"					\
+	--title "MENU2"					\
 	--menu "Escolha uma opção"			\
 	0 0 0						\
 	1 "Instalar pacote"				\
 	2 "Desinstalar pacote"				\
-	3 "Atualizar pacote" 				\
-	4 "Atualizar sistemas"				\
-	5 "Listar pacotes"				\
-	6 "Atualizar sistema"				\
-	7 "Voltar" )					\
+	3 "Atualizar sistema" 				\
+	4 "Listar pacotes"				\
+	5 "Atualizar pacotes"				\
+	6 "Voltar" )					\
 
 	case $OPCAO in
 
@@ -743,9 +721,9 @@ OPCAO=$(dialog						\
 		2) DPAC	   ;;
 		3) AREP    ;;
 		4) ASIS    ;;
-		5) LREP    ;;
-		6) ASIS     ;;
- 	        7) MENU    ;;
+		4) LREP    ;;
+		5) APA     ;;
+ 	        6) MENU2    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
