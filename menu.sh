@@ -428,20 +428,17 @@ fi
 GREP
 }
 function AREP(){
-apt-get dist-upgrade > /tmp/upgr.txt
-dialog --textbox /tmp/upgr.txt 0 0 
+apt-get dist-upgrade 
 dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
 GREP
 }
-function LREP(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote" 0 0)
+function LSPA(){
 apt list --installed | cat -n /tmp/lispar.txt > /tmp/lispar.txt
-dialog --textbox /tmp/lispas.txt 0 0
+dialog --textbox /tmp/lispar.txt 0 0
 GREP
 }
 function APA(){
-apt-get update > /tmp/updt.txt
-dialog --textbox /tmp/ipdt.txt 0 0
+apt-get update 
 dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
 }
@@ -464,7 +461,7 @@ OPCAO=$(dialog						\
 		2) DPAC	   ;;
 		3) AREP    ;;
 		4) ASIS    ;;
-		4) LREP    ;;
+		4) LSPA    ;;
 		5) APA     ;;
  	        6) MENU    ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
