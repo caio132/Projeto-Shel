@@ -428,18 +428,20 @@ fi
 GREP
 }
 function AREP(){
-apt-get dist-upgrade
+apt-get dist-upgrade > /tmp/upgr.txt
+dialog --textbox /tmp/upgr.txt 0 0 
 dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
 GREP
 }
 function LREP(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite o nome do pacote" 0 0)
-$NOME > /tmp/lispar.txt ????
+apt list --installed | cat -n /tmp/lispar.txt > /tmp/lispar.txt
 dialog --textbox /tmp/lispas.txt 0 0
 GREP
 }
 function APA(){
-apt-get update
+apt-get update > /tmp/updt.txt
+dialog --textbox /tmp/ipdt.txt 0 0
 dialog --title "Informação" --msgbox "Atualização Completa" 0 0
 GREP
 }
