@@ -46,7 +46,7 @@ mv $NOME /home/vagrant/ #
 dialog --title "Informação" --msgbox "Arquivo/Diretorio movido com sucesso" 0 0
 GARQ
 }
-function CDIR(){
+function CARQ(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Digite nome do arquivo/diretorio" 0 0)
 cp $NOME /home/vagrant/ #
 dialog --title "Informação" --msgbox "Arquivo/Diretorio copiado com sucesso" 0 0
@@ -138,7 +138,7 @@ OPCAO=$(dialog					\
 		3) CDIR ;;
 		4) ADIR ;;
 		5) MARQ ;;
-		6) CDIR ;;
+		6) CARQ ;;
 		7) LARQ ;;
 		8) PERM ;;
 		9) MENU ;;
@@ -692,7 +692,7 @@ GDIS
 }
 IMEM(){
 clear
-free -h ?> /tmp/lsimem.txt
+free -h > /tmp/lsimem.txt
 dialog --textbox /tmp/lsimem.txt 0 0
 GDIS
 }
@@ -798,7 +798,6 @@ OPCAO=$(dialog						\
 		1) IPAC    ;;
 		2) DPAC	   ;;
 		3) AREP    ;;
-		4) ASIS    ;;
 		4) LREP    ;;
 		5) APA     ;;
  	        6) MENU2    ;;
