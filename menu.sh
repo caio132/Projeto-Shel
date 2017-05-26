@@ -470,7 +470,6 @@ OPCAO=$(dialog						\
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GREP ;;
 	esac
 }
-
 function MENU(){
 OPCAO=$(dialog					\
 	--stdout				\
