@@ -246,11 +246,11 @@ OPCAO=$(dialog				              \
 	esac
 }
 
-function GRES
+function GRES(){
 dialog --title "Informação" --msgbox "Estamos em construção" 0 0
 
 GRES
-
+}
 CTEC(){
 	dialog --yesno 'Aperte YES para configurar o teclado' 0 0
 	if (( $? == "0" )); then
@@ -589,11 +589,11 @@ OPCAO=$(dialog				              \
 	esac
 }
 
-function GRES
+function GRES(){
 dialog --title "Informação" --msgbox "Estamos em construção" 0 0
 
 GRES
-
+}
 CTEC(){
 	dialog --yesno 'Aperte YES para configurar o teclado' 0 0
 	if (( $? == "0" )); then
