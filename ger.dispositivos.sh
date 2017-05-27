@@ -14,7 +14,7 @@ OPCAO=$(dialog						\
 
 	case $OPCAO in
 
-		1) GREP ;;
+		1) GDIS ;;
 		2) FIM ;;
 		255) exit ;;
 		*) exit 0 ;;
@@ -31,7 +31,63 @@ else
 	MENU
 fi
 }
-GREP(){
+CTEC(){
+	dialog --yesno 'Aperte YES para configurar o teclado' 0 0
+	if (( $? == "0" )); then
+		sed 's/us/br/g' /etc/default/keyboard > /etc/default/keyboard.tmp && mv /etc/default/keyboard.tmp /etc/default/keyboard
+	else
+		GDIS
+	fi
+		if (( $? == '0' )); then
+			dialog --yesno 'Deseja reiniciar a máquina?' 0 0
+				if (( $? == '0' )); then
+					init 6
+				else
+					GDIS
+				fi
+		fi
+GDIS
+}
+IBAT(){
+acpi -V > /tmp/lsacpi.txt #
+dialog --textbox /tmp/lsacpi.txt 0 0
+GDIS
+}
+ICPU(){
+lscpu > /tmp/lscpu.txt #
+dialog --textbox /tmp/lscpu.txt 0 0
+GDIS
+}
+IMEM(){
+clear
+free -h > /tmp/lsimem.txt #
+dialog --textbox /tmp/lsimem.txt 0 0
+GDIS
+}
+VDSO(){
+clear
+lsb_release -a > /tmp/lslsb.txt #
+dialog --textbox /tmp/lslsb.txt 0 0
+GDIS
+}
+VKER(){
+clear
+uname -r > /tmp/lsunam.txt #
+dialog --textbox /tmp/lsunam.txt 0 0
+}
+IPVI(){
+clear
+lspci | grep -i vga > tmp/lsgrepi.txt #
+dialog --textbox /tmp/lsgrepi.txt 0 0
+GDIS
+}
+TPCL(){
+clear
+uptime > /tmp/lsupti_me.txt #
+dialog --textbox /tmp/lsupti_me.txt 0 0
+GDIS
+}
+GDIS(){
 	OPCAO=$(dialog						\
 		--stdout					\
 		--title 'Gerenciar Dispositivo'			\
@@ -55,79 +111,10 @@ GREP(){
 		5) VDSO ;;
 		6) VKER ;;
 		7) IPVI ;;
-		8) TPCL ;;
+		8) TPCL ;;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 		9) MENU ;;
-		255) exit 0 ;;
-		*) exit 0 ;;
+		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; GDIS ;;
 	esac
-}
-CTEC(){
-	dialog --yesno 'Aperte YES para configurar o teclado' 0 0
-	if (( $? == "0" )); then
-		sed 's/us/br/g' /etc/default/keyboard > /etc/default/keyboard.tmp && mv /etc/default/keyboard.tmp /etc/default/keyboard
-	else
-		GREP
-	fi
-		if (( $? == '0' )); then
-			dialog --yesno 'Deseja reiniciar a máquina?' 0 0
-				if (( $? == '0' )); then
-					init 6
-				else
-					GREP
-				fi
-		fi
-GREP
-}
-IBAT(){
-clear
-acpi -V
-echo 'Digite [enter] para voltar'
-read xxx
-GREP
-}
-ICPU(){
-#clear
-lscpu > /tmp/lscpu.txt
-dialog --textbox /tmp/lscpu.txt 0 0
-#echo 'Digite [enter] para voltar'
-#read xxx
-GREP
-}
-IMEM(){
-clear
-free -h
-echo 'Digite [enter] para voltar'
-read xxx
-GREP
-}
-VDSO(){
-lsb_release -a > /tmp/lsb_releasea.txt
-dialog --textbox /tmp/lsb_releasea.txt 0 0
-#echo 'Digite [enter] para voltar'
-#read xxx
-GREP
-}
-VKER(){
-clear
-uname -r
-echo 'Digite [enter] para voltar'
-read xxx
-GREP
-}
-IPVI(){
-clear
-lspci | grep -i vga > /tmp/lspcivga.txt
-dialog --textbox /tmp/lspcivga.txt 0 0
-#echo 'Digite [enter] para voltar'
-#read xxx
-GREP
-}
-TPCL(){
-clear
-uptime
-echo 'Digite [enter] para voltar'
-read xxx
-GREP
 }
 
 while (( $TMP == '0' )); do
