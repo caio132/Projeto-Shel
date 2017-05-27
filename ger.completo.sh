@@ -254,10 +254,28 @@ dialog --textbox /tmp/lisconf.txt 0 0
 GRES
 }
 function CRMA(){
-NOME=$(dialog --stdout --title "Nome" --inputbox "" 0 0)
-?
-dialog --title "Informação" --msgbox "" 0 0
-GRES
+INT=$(dialog --stdout --inputbox 'Coloque a interfade da rede (Ex.: eth0, eth1)' 0 0)
+echo "########################################################################" >> /etc/network/interfaces
+echo "auto $INT" >> /etc/network/interfaces
+echo "allow-hotplug $INT" >> /etc/network/interfaces
+echo "iface $INT inet static" >> /etc/network/interfaces
+IP=$(dialog --stdout --inputbox "Coloque o IP da rede:" 0 0)
+echo "address $IP" >> /etc/network/interfaces
+NETM=$(dialog --stdout --inputbox "Coloque o Netmask da rede:" 0 0)
+echo "netmask $NETM" >> /etc/network/interfaces
+NETW=$(dialog --stdout --inputbox "Coloque o Network da rede:" 0 0)
+echo "network $NETW" >> /etc/network/interfaces
+BROA=$(dialog --stdout --inputbox "Coloque o Broadcast da rede:" 0 0)
+echo "broadcast $BROA" >> /etc/network/interfaces
+echo "########################################################################" >> /etc/network/interfaces
+dialog --tilte 'Informação' --msgbox 'Nova rede feita com sucesso' 0 0
+dialog --title 'Informação' --yesno 'Deseja ver as alterações feitas?' 0 0
+if [ $? == 0 ]; then
+	dialog --title 'Informação' --textbox /etc/network/interfaces 0 0
+	GRES
+else
+	GRES
+fi
 }
 function DPRE(){
 NOME=$(dialog --stdout --title "Nome" --inputbox "Desativar rede" 0 0)
