@@ -5,7 +5,7 @@ OPCAO=$(dialog				\
 	--title 'Menu'			\
 	--menu 'Escolha uma opção'	\
 	0 0 0				\
-	1 'Gerenciar Arquivos'		\
+	1 'Gerenciar Redes'		\
 	2 'Sair'			)
 	case $OPCAO in
 		1) GRES ;;
