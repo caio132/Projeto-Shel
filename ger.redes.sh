@@ -1,4 +1,7 @@
 #!/bin/bash
+
+TEMP=1
+
 MENU(){
 OPCAO=$(dialog				\
 	--stdout			\
@@ -13,6 +16,39 @@ OPCAO=$(dialog				\
 		*) exit 0
 	esac
 }
+function LRES(){
+dialog --title "Menu" --msgbox "estamos em construção"
+GRES
+}
+function LRPEC(){
+dialog --title "Menu" --msgbox "estamos em construção"
+GRES
+}
+function CRMA(){
+dialog --title "Menu" --msgbox "estamos em construção"
+GRES
+}
+function DPRE(){
+dialog --title "Menu" --msgbox "estamos em construção"
+GRES
+}
+function APRE(){
+dialog --title "Menu" --msgbox "estamos em construção"
+GRES
+}
+function VRFI(){
+dialog --title "Menu" --msgbox "estamos em construção"
+GRES
+}
+function MMAC(){
+dialog --title "Menu" --msgbox "estamos em construção"
+GRES
+}
+function RSIS(){
+dialog --title "Menu" --msgbox "estamos em construção"
+GRES
+}
+
 function GRES(){
 OPCAO=$(dialog					      \
 	--stdout				      \
@@ -27,9 +63,10 @@ OPCAO=$(dialog					      \
 	6 "Visualizar redes fisicas "		      \
 	7 "Mudar MAC"				      \
 	8 "Reiniciar Sistema"			      \
-	9 "Voltar")
+	9 "Voltar")				      \
 	
 	case $OPCAO in
+	
 		1) LRES ;;
 		2) LRPEC ;;
 		3) CRMA ;;
