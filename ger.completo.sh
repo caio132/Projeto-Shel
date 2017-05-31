@@ -532,7 +532,7 @@ fi
 GRES
 }
 function RSIS(){
-/etc/init.d/networkin restart 
+/etc/init.d/networkin restart
 dialog --title "Informação" --msgbox "Sistema reiniciado com sucesso" 0 0
 GRES
 }
