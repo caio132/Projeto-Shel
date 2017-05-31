@@ -540,7 +540,7 @@ GRES(){
 OPCAO=$(dialog					      \
 	--stdout				      \
 	--title "Menu"				      \
-	--menu "Escolha uma opção"		      \ 
+	--menu "Escolha uma opção"		      \
 	0 0 0 					      \
 	1 "Listar redes"			      \
 	2 "Listar rede especifica"		      \
