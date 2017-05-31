@@ -230,10 +230,6 @@ OPCAO=$(dialog						                  \
 	7 'Permissão Total'				                  \
 	8 'Voltar')
 
-if [[ $? == "1" ]]; then
-	GARQ
-fi
-
 case $OPCAO in
 	1) SESQ ;;
 	2) SLER ;;
@@ -263,9 +259,6 @@ OPCAO=$(dialog					                \
 	8 "Permissionamento"			            	\
 	9 "Voltar")				                \
 
-if [[ $? == "0" ]]; then
-	MENU
-fi
 	case $OPCAO in
 
 		1) CARQ ;;
@@ -424,10 +417,6 @@ OPCAO=$(dialog				              \
 	9 'Mudar o grupo de um usuário'	              \
 	10 "Voltar")
 
-if [[ $? == "0" ]]; then
-	MENU
-fi
-
 	case $OPCAO in
 
 		1) CUSR ;;
@@ -563,10 +552,6 @@ OPCAO=$(dialog					      \
 	8 "Adicionar nova rede" 		      \
 	9 "Voltar")				      \
 	
-if [[ $? == "0" ]]; then
-	MENU
-fi
-
 	case $OPCAO in
 	
 		1) LRES ;;
@@ -654,9 +639,6 @@ function GDIS(){
 		8 'Quanto tempo o PC está ligado'		\
 		9 'Voltar')
 
-if [[ $? == "0" ]]; then
-	MENU
-fi
 	case $OPCAO in
 	
 		1) CTEC ;;
@@ -766,9 +748,6 @@ OPCAO=$(dialog						\
 	8 "Buscar atualizações necessárias"		\
 	9 "Voltar")
 
-if [[ $? == "0" ]]; then
-	MENU
-fi
 	case $OPCAO in
 
 		1) IPAC    ;;
