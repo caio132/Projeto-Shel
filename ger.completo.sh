@@ -230,6 +230,10 @@ OPCAO=$(dialog						                  \
 	7 'Permissão Total'				                  \
 	8 'Voltar')
 
+if [[ $? == "1" ]]; then
+	MENU
+fi
+
 case $OPCAO in
 	1) SESQ ;;
 	2) SLER ;;
