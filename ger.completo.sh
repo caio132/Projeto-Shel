@@ -539,7 +539,7 @@ GRES
 GRES(){
 OPCAO=$(dialog					      \
 	--stdout				      \
-	--title "MENU"				      \
+	--title "Menu"				      \
 	--menu "Escolha uma opção"		      \ 
 	0 0 0 					      \
 	1 "Listar redes"			      \
@@ -550,8 +550,10 @@ OPCAO=$(dialog					      \
 	6 "Mudar MAC"				      \
 	7 "Reiniciar Sistema"			      \
 	8 "Adicionar nova rede" 		      \
-	9 "Voltar")
+	9 "Voltar")				      \
+	
 	case $OPCAO in
+	
 		1) LRES ;;
 		2) LRPEC ;;
 		3) CRMA ;;
