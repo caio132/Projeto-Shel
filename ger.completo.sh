@@ -444,6 +444,11 @@ ifconfig $NOME > /tmp/lisconf.txt
 dialog --textbox /tmp/lisconf.txt 0 0
 GRES
 }
+function CRMA(){
+
+
+GRES
+}
 function ARED(){
 INT=$(dialog --stdout --inputbox 'Coloque a interfade da rede (Ex.: eth0, eth1)' 0 0)
 if [[ $? == '1' ]]; then
