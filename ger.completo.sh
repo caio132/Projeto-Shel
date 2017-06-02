@@ -1,5 +1,7 @@
 #!/bin/bash
 clear
+apt-get install dialog
+clear
 
 USER="Chefe"
 PASS="123"
