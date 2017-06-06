@@ -447,11 +447,6 @@ dialog --textbox /tmp/lisconf.txt 0 0
 GRES
 }
 function CRMA(){
-
-
-GRES
-}
-function ARED(){
 INT=$(dialog --stdout --inputbox 'Coloque a interfade da rede (Ex.: eth0, eth1)' 0 0)
 if [[ $? == '1' ]]; then
 	GRES
@@ -556,8 +551,7 @@ OPCAO=$(dialog					      \
 	5 "Ativar placa de rede"		      \
 	6 "Mudar MAC"				      \
 	7 "Reiniciar Sistema"			      \
-	8 "Adicionar nova rede" 		      \
-	9 "Voltar")				      \
+	8 "Voltar")				      \
 	
 	case $OPCAO in
 	
@@ -568,8 +562,7 @@ OPCAO=$(dialog					      \
 		5) APRE ;;
 		6) MMAC ;;
 		7) RSIS ;;
-		8) ARED ;;
-	 	9) MENU ;;
+	 	8) MENU ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; MENU ;;
 	esac
 }
