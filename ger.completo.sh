@@ -3,7 +3,7 @@ clear
 apt-get install dialog
 clear
 
-USER="Chefe"
+USER="PUGLIFE"
 PASS="123"
 
 function CARQ(){
