@@ -446,11 +446,7 @@ ifconfig $NOME > /tmp/lisconf.txt
 dialog --textbox /tmp/lisconf.txt 0 0
 GRES
 }
-function CRMA(){
-INT=$(dialog --stdout --inputbox 'Coloque a interfade da rede (Ex.: eth0, eth1)' 0 0)
-if [[ $? == '1' ]]; then
-	GRES
-fi
+function ADRE(){
 echo "########################################################################" >> /etc/network/interfaces
 echo "auto $INT" >> /etc/network/interfaces
 echo "allow-hotplug $INT" >> /etc/network/interfaces
@@ -538,6 +534,28 @@ function RSIS(){
 dialog --title "Informação" --msgbox "Sistema reiniciado com sucesso" 0 0
 GRES
 }
+function CRMA(){
+INT=$(dialog --stdout --inputbox 'Digite o nome da nova rede (Ex.: eth0, eth1)' 0 0)
+if [[ $? == '1' ]]; then
+	GRES
+fi
+IP=$(dialog --stdout --inputbox 'Digite o IP da nova rede' 0 0)
+if [[ $? == '1' ]]; then
+	GRES
+fi
+MASK=$(dialog --stdout --inputbox 'Digite a Máscara da nova rede' 0 0)
+if [[ $? == '1' ]]; then
+	GRES
+fi
+ifconfig $INT $IP netmask $MASK
+if [[ $? == '0' ]]; then
+	dialog --title 'Informação' --msgbox 'Rede configurada manualmente' 0 0
+else
+	dialog --title 'Informação' --msgbox 'Erro, tente novamente' 0 0
+	CRMA
+fi
+GRES
+}
 GRES(){
 OPCAO=$(dialog					      \
 	--stdout				      \
@@ -546,23 +564,25 @@ OPCAO=$(dialog					      \
 	0 0 0 					      \
 	1 "Listar redes"			      \
 	2 "Listar rede especifica"		      \
-	3 "Configurar rede manualmente"		      \
+	3 "Adicionar rede "		      	      \
 	4 "Desativar placa de rede"		      \
 	5 "Ativar placa de rede"		      \
 	6 "Mudar MAC"				      \
 	7 "Reiniciar Sistema"			      \
-	8 "Voltar")				      \
+	8 "Configurar rede manualmente		      \
+	9 "Voltar")				      \
 	
 	case $OPCAO in
 	
 		1) LRES ;;
 		2) LRPEC ;;
-		3) CRMA ;;
+		3) ADRE ;;
 		4) DPRE ;;
 		5) APRE ;;
 		6) MMAC ;;
 		7) RSIS ;;
-	 	8) MENU ;;
+	 	8) CRMA ;;
+		9) MENU ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; MENU ;;
 	esac
 }
