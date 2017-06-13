@@ -633,7 +633,7 @@ GDIS
 }
 IPVI(){
 clear
-lspci | grep -i vga > tmp/ls.txt
+lspci | grep -i vga > /tmp/ls.txt
 dialog --textbox /tmp/ls.txt 0 0
 GDIS
 }
