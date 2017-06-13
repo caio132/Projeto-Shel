@@ -762,7 +762,7 @@ OPCAO=$(dialog						\
 	2 "Desinstalar pacote"				\
 	3 "Atualizar sistema" 				\
 	4 "Listar pacotes"				\
-	5 "Atualizar pacotes"				\
+	5 "Atualizar Repositório"			\
 	6 "Informações sobre o pacote"			\
 	7 "Desinstalar pacote e suas dependências"	\
 	8 "Buscar atualizações necessárias"		\
