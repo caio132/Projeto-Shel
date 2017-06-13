@@ -1,6 +1,7 @@
 #!/bin/bash
 clear
-apt-get install dialog
+apt-get install -y dialog
+apt-get update 
 clear
 
 USER="PUGLIFE"
@@ -709,7 +710,7 @@ dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
 GREP
 }
 function LSPA(){
-apt list --installed | cat -n /tmp/lispar.txt > /tmp/lispar.txt
+apt list --installed > /tmp/lispar.txt
 dialog --textbox /tmp/lispar.txt 0 0
 GREP
 }
