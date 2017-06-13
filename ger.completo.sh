@@ -569,11 +569,11 @@ OPCAO=$(dialog					      \
 	5 "Ativar placa de rede"		      \
 	6 "Mudar MAC"				      \
 	7 "Reiniciar Sistema"			      \
-	8 "Configurar rede manualmente		      \
+	8 "Configurar rede manualmente"		      \
 	9 "Voltar")				      \
-	
+
 	case $OPCAO in
-	
+
 		1) LRES ;;
 		2) LRPEC ;;
 		3) ADRE ;;
