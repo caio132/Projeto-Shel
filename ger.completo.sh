@@ -557,21 +557,34 @@ else
 fi
 GRES
 }
+function PRED(){
+NOME=$(dialog --stdout --inputbox "Digite o Endereço IP a ser pingado" 0 0)
+ping $NOME > /tmp/pingre.txt
+dialog --tailbox /tmp/pingre.txt 0 0
+GRES
+}
+function VGAT(){
+route -n > /tmp/route.txt
+dialog --textbox /tmp/route.txt 0 0
+GRES
+}
 GRES(){
 OPCAO=$(dialog					      \
 	--stdout				      \
 	--title "Menu"				      \
 	--menu "Escolha uma opção"		      \
 	0 0 0 					      \
-	1 "Listar redes"			      \
-	2 "Listar rede especifica"		      \
+	1 "Visualizar interfaces de redes"	      \
+	2 "Visualizar rede especifica"		      \
 	3 "Adicionar rede "		      	      \
 	4 "Desativar placa de rede"		      \
 	5 "Ativar placa de rede"		      \
 	6 "Mudar MAC"				      \
 	7 "Reiniciar Sistema"			      \
 	8 "Configurar rede manualmente"		      \
-	9 "Voltar")				      \
+	9 "Teste de conexão"			      \
+	10 "Visualizar Gataway"			      \
+	11 "Voltar")				      \
 
 	case $OPCAO in
 
@@ -583,7 +596,9 @@ OPCAO=$(dialog					      \
 		6) MMAC ;;
 		7) RSIS ;;
 	 	8) CRMA ;;
-		9) MENU ;;
+		9) PRED ;;
+		10) VGAT ;;
+		11) MENU ;;
 		*) dialog --title "Opção Invalida" --msgbox "Digite Novamente" 0 0 ; MENU ;;
 	esac
 }
@@ -705,8 +720,9 @@ fi
 GREP
 }
 function AREP(){
-apt-get dist-upgrade
-dialog --title "Informação" --msgbox "Sistema atualizado com sucesso" 0 0
+NOME=$(dialog --stadout --tittle "Nome" --inputbox "Digite o pacote a ser atualizado" 0 0)
+apt-get dist-upgrade $NOME
+dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
 GREP
 }
 function LSPA(){
@@ -761,7 +777,7 @@ OPCAO=$(dialog						\
 	0 0 0						\
 	1 "Instalar pacote"				\
 	2 "Desinstalar pacote"				\
-	3 "Atualizar sistema" 				\
+	3 "Atualizar pacote" 				\
 	4 "Listar pacotes"				\
 	5 "Atualizar Repositório"			\
 	6 "Informações sobre o pacote"			\
