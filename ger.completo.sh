@@ -559,8 +559,7 @@ GRES
 }
 function PRED(){
 NOME=$(dialog --stdout --inputbox "Digite o Endereço IP a ser pingado" 0 0)
-ping $NOME > /tmp/pingre.txt
-dialog --tailbox /tmp/pingre.txt 0 0
+ping $NOME > /tmp/pingar.log | dialog --title "Pingando $PN" --tailbox /tmp/pingar.log 100 100
 GRES
 }
 function VGAT(){
@@ -583,7 +582,7 @@ OPCAO=$(dialog					      \
 	7 "Reiniciar Sistema"			      \
 	8 "Configurar rede manualmente"		      \
 	9 "Teste de conexão"			      \
-	10 "Visualizar Gataway"			      \
+	10 "Visualizar Gateway"			      \
 	11 "Voltar")				      \
 
 	case $OPCAO in
@@ -720,9 +719,17 @@ fi
 GREP
 }
 function AREP(){
-NOME=$(dialog --stadout --tittle "Nome" --inputbox "Digite o pacote a ser atualizado" 0 0)
-apt-get dist-upgrade $NOME
-dialog --title "Informação" --msgbox "Pacote atualizado com sucesso" 0 0
+dialog  --yesno "Deseja atualizar o repositorio?" 5 40
+
+case $? in
+	0) apt-get upgrade > /tmp/att.log | dialog --title "Atualizando" --tailbox /tmp/att.log; volta=$?;;
+	1) menu;;
+esac
+
+case $volta in
+	0) dialog --msgbox "Atualizado com sucesso" 0 0; menu;;
+	1) dialog --msgbox "Não foi possivela atualizar" 0 0; menu;; 
+esac
 GREP
 }
 function LSPA(){
@@ -731,8 +738,16 @@ dialog --textbox /tmp/lispar.txt 0 0
 GREP
 }
 function APA(){
-apt-get update
-dialog --title "Informação" --msgbox "Atualização Completa" 0 0
+dialog  --yesno "Deseja atualizar o repositorio?" 5 40
+
+case $? in
+	0) apt-get update > /tmp/att.log | dialog --title "Atualizando" --tailbox /tmp/att.log 100 100; volta=$?;;
+	1) menu;;
+esac
+
+case $volta in
+	0) dialog --msgbox "Atualizado com sucesso" 0 0; menu;;
+	1) dialog --msgbox "Não foi possivela atualizar" 0 0; menu;; 
 GREP
 }
 INFP(){
