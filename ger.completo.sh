@@ -817,14 +817,14 @@ OPCAO=$(dialog						\
 }
 function CRED(){
 dialog --title "Representantes" 0 0
-Caio Henrique
-Gabriel
-Guilherme Leonel
-Gustavo Oliveira
-Luiz Girotto
-Lucas Antunes
-Rebeca
-dialog --textbox 0 0
+Caio Henrique > /tmp/credit.txt/
+Gabriel > /tmp/credit.txt/
+Guilherme Leonel > /tmp/credit.txt/
+Gustavo Oliveira > /tmp/credit.txt/
+Luiz Girotto > /tmp/credit.txt/
+Lucas Antunes  > /tmp/credit.txt/
+Rebeca > /tmp/credit.txt/
+dialog --textbox  /tmp/credit.txt/ 0 0 
 MENU
 }
 function MENU(){
